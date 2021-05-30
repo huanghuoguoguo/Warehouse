@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+{% if obj == 'warehouse'%}
+<table border="1">
+    <caption>仓库</caption>
+    <tr>
+        <th> id</th>
+        <th> 名称</th>
+        <th> 仓库信息</th>
+        <th> 物品数</th>
+        <th> 容量</th>
+        <th> 创建时间</th>
+    </tr>
+    <tr>
+        <td>{{warehouse_obj.id}}</td>
+        <td>{{warehouse_obj.name}}</td>
+        <td>{{warehouse_obj.info}}</td>
+        <td>{{warehouse_obj.goods_numbers}}</td>
+        <td>{{warehouse_obj.capacity}}</td>
+        <td>{{warehouse_obj.createTime}}</td>
+    </tr>
+</table>
+<table border="1">
+    <caption>保管员</caption>
+    <tr>
+        <th> id</th>
+        <th> 姓名</th>
+        <th> 年龄</th>
+        <th> 性别</th>
+        <th> 学历</th>
+        <th> 籍贯</th>
+        <th> 入职时间</th>
+    </tr>
+    {% for storekeeper in storekeepers %}
+    <tr>
+        <td>{{storekeeper.id}}</td>
+        <td><a href="detail/storekeeper/{{storekeeper.id}}">{{storekeeper.name}}</a></td>
+        <td>{{storekeeper.age}}</td>
+        <td>{{storekeeper.sex}}</td>
+        <td>{{storekeeper.degree}}</td>
+        <td>{{storekeeper.origin}}</td>
+        <td>{{storekeeper.onJobTime}}</td>
+        <td><a href='/management/deleteStorekeeper/{{warehouse_obj.id}}/{{storekeeper.id}}'>删除</a></td>
+    </tr>
+    {% endfor %}
+    <a href="/management/addStorekeeper/{{warehouse_obj.id}}">添加保管员</a>
+</table>
+<table border="1">
+    <caption>货品</caption>
+    <tr>
+        <th> id</th>
+        <th> 名称</th>
+        <th> 仓库名称</th>
+        <th> 仓库id</th>
+        <th> 类别</th>
+        <th> 货物信息</th>
+        <th> 入库时间</th>
+        <th> 剩余量</th>
+    </tr>
+    {% for good in goods %}
+    <tr>
+        <td>{{good.id}}</td>
+        <td>{{good.name}}</td>
+        <td>{{good.warehouse.name}}</td>
+        <td>{{good.warehouse.id}}</td>
+        <td>{{good.good_class}}</td>
+        <td>{{good.good_info}}</td>
+        <td>{{good.create_time}}</td>
+        <td>{{good.amount}}</td>
+        <td><a href='/management/delete/good/{{good.id}}'>删除</a></td>
+    </tr>
+    {% endfor %}
+    <a href="/management/add/good">添加货品</a>
+</table>
+{% elif obj == 'storekeeper'%}
+<table border="1">
+    <caption>保管员</caption>
+    <tr>
+        <th> id</th>
+        <th> 姓名</th>
+        <th> 年龄</th>
+        <th> 性别</th>
+        <th> 学历</th>
+        <th> 籍贯</th>
+        <th> 入职时间</th>
+    </tr>
+    <tr>
+        <td>{{storekeeper_obj.id}}</td>
+        <td>{{storekeeper_obj.name}}</td>
+        <td>{{storekeeper_obj.age}}</td>
+        <td>{{storekeeper_obj.sex}}</td>
+        <td>{{storekeeper_obj.degree}}</td>
+        <td>{{storekeeper_obj.origin}}</td>
+        <td>{{storekeeper_obj.onJobTime}}</td>
+    </tr>
+</table>
+<table border="1">
+    <caption>仓库</caption>
+    <tr>
+        <th> id</th>
+        <th> 名称</th>
+        <th> 仓库信息</th>
+        <th> 物品数</th>
+        <th> 容量</th>
+        <th> 创建时间</th>
+    </tr>
+    {% for warehouse in warehouses %}
+    <tr>
+        <td>{{warehouse.id}}</td>
+        <td><a href="/show/detail/warehouse/{{warehouse.id}}">{{warehouse.name}}</a></td>
+        <td>{{warehouse.info}}</td>
+        <td>{{warehouse.goods_numbers}}</td>
+        <td>{{warehouse.capacity}}</td>
+        <td>{{warehouse.createTime}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if obj == 'warehouse' %}
+仓库
+<form action="/management/modify/{{obj}}/{{obj_.id}}" method="post">
+    <p>名称<input type="text" name="name" value="{{obj_.name}}"/></p>
+    <p>容量<input type="text" name="capacity" value="{{obj_.capacity}}"/></p>
+    <p>仓库信息<input type="text" name="info" value="{{obj_.info}}"/></p>
+    <p>物品数<input type="text" name="goods_numbers" value="{{obj_.goods_numbers}}"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+{% elif obj == 'good' %}
+物品
+<form action="/management/modify/{{obj}}/{{obj_.id}}" method="post">
+    <p>名称<input type="text" name="name" value="{{obj_.name}}"/></p>
+    <p>所属仓库id<input type="text" name="warehouse_id" value="{{obj_.warehouse_id}}"/></p>
+    <p>类别<input type="text" name="good_class" value="{{obj_.good_class}}"/></p>
+    <p>货物信息<input type="text" name="good_info" value="{{obj_.good_info}}"/></p>
+    <p>剩余量<input type="text" name="amount" value="{{obj_.amount}}"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+{% elif obj == 'storekeeper' %}
+保管员
+<form action="/management/modify/{{obj}}/{{obj_.id}}" method="post">
+    <p>姓名<input type="text" name="name" value="{{obj_.name}}"/></p>
+    <p>年龄<input type="text" name="age" value="{{obj_.age}}"/></p>
+    <p>性别<input type="text" name="sex" value="{{obj_.sex}}"/></p>
+    <p>学历<input type="text" name="degree" value="{{obj_.degree}}"/></p>
+    <p>籍贯<input type="text" name="origin" value="{{obj_.origin}}"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+
+{% endif %}
+</body>
+</html>

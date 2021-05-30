@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据</title>
+</head>
+<body>
+<!--数据库载入-->
+<table border="1">
+    <caption>仓库</caption>
+    <tr>
+        <th> id</th>
+        <th> 名称</th>
+        <th> 仓库信息</th>
+        <th> 物品数</th>
+        <th> 容量</th>
+        <th> 创建时间</th>
+    </tr>
+    {% for warehouse in warehouses %}
+    <tr>
+        <td>{{warehouse.id}}</td>
+        <td><a href="detail/warehouse/{{warehouse.id}}">{{warehouse.name}}</a></td>
+        <td>{{warehouse.info}}</td>
+        <td>{{warehouse.goods_numbers}}</td>
+        <td>{{warehouse.capacity}}</td>
+        <td>{{warehouse.createTime}}</td>
+        <td><a href='/management/modify/warehouse/{{warehouse.id}}'>修改</a></td>
+        <td><a href='/management/delete/warehouse/{{warehouse.id}}'>删除</a></td>
+    </tr>
+    {% endfor %}
+    <a href="/management/add/warehouse">添加仓库</a>
+</table>
+<table border="1">
+    <caption>货品</caption>
+    <tr>
+        <th> id</th>
+        <th> 名称</th>
+        <th> 仓库名称</th>
+        <th> 仓库id</th>
+        <th> 类别</th>
+        <th> 货物信息</th>
+        <th> 入库时间</th>
+        <th> 剩余量</th>
+    </tr>
+    {% for good in goods %}
+    <tr>
+        <td>{{good.id}}</td>
+        <td>{{good.name}}</td>
+        <td>{{good.warehouse.name}}</td>
+        <td>{{good.warehouse.id}}</td>
+        <td>{{good.good_class}}</td>
+        <td>{{good.good_info}}</td>
+        <td>{{good.create_time}}</td>
+        <td>{{good.amount}}</td>
+        <td><a href='/management/modify/good/{{good.id}}'>修改</a></td>
+        <td><a href='/management/delete/good/{{good.id}}'>删除</a></td>
+    </tr>
+    {% endfor %}
+    <a href="/management/add/good">添加货品</a>
+</table>
+<table border="1">
+    <caption>保管员</caption>
+    <tr>
+        <th> id</th>
+        <th> 姓名</th>
+        <th> 年龄</th>
+        <th> 性别</th>
+        <th> 学历</th>
+        <th> 籍贯</th>
+        <th> 入职时间</th>
+    </tr>
+    {% for storekeeper in storekeepers %}
+    <tr>
+        <td>{{storekeeper.id}}</td>
+        <td><a href="detail/storekeeper/{{storekeeper.id}}">{{storekeeper.name}}</a></td>
+        <td>{{storekeeper.age}}</td>
+        <td>{{storekeeper.sex}}</td>
+        <td>{{storekeeper.degree}}</td>
+        <td>{{storekeeper.origin}}</td>
+        <td>{{storekeeper.onJobTime}}</td>
+        <td><a href='/management/modify/storekeeper/{{storekeeper.id}}'>修改</a></td>
+        <td><a href='/management/delete/storekeeper/{{storekeeper.id}}'>删除</a></td>
+    </tr>
+    {% endfor %}
+    <a href="/management/add/storekeeper">添加保管员</a>
+</table>
+</body>
+</html>

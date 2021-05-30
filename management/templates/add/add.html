@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+</head>
+<body>
+{% if obj == 'warehouse' %}
+仓库
+<form action="/management/add/warehouse" method="post">
+    <p>名称<input type="text" name="name"/></p>
+    <p>容量<input type="text" name="capacity"/></p>
+    <p>仓库信息<input type="text" name="info"/></p>
+    <p>物品数<input type="text" name="goods_numbers"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+{% elif obj == 'good' %}
+物品
+<form action="/management/add/good" method="post">
+    <p>名称<input type="text" name="name"/></p>
+    <p>所属仓库id<input type="text" name="warehouse_id"/></p>
+    <p>类别<input type="text" name="good_class"/></p>
+    <p>货物信息<input type="text" name="good_info"/></p>
+    <p>剩余量<input type="text" name="amount"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+{% elif obj == 'storekeeper' %}
+保管员
+<form action="/management/add/storekeeper" method="post">
+    <p>姓名<input type="text" name="name"/></p>
+    <p>年龄<input type="text" name="age"/></p>
+    <p>性别<input type="text" name="sex"/></p>
+    <p>学历<input type="text" name="degree"/></p>
+    <p>籍贯<input type="text" name="origin"/></p>
+    <p><input type="submit" value="提交"/></p>
+</form>
+
+{% endif %}
+</body>
+</html>
